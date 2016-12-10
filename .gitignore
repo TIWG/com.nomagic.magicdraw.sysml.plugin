@@ -1,0 +1,13 @@
+.cache
+.ensime*
+.idea
+*.iml
+*.bak
+*.log
+*~
+*links.json
+project/project
+project/target
+local.*
+gh-pages/
+target
