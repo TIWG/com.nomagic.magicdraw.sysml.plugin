@@ -36,7 +36,7 @@ val noSourcesSettings: Seq[Setting[_]] = Seq(
 
   organization := "org.omg.tiwg.vendor.nomagic",
 
-  version := "18.0-sp6",
+  version := "18.4-sp1",
 
   // disable automatic dependency on the Scala library
   autoScalaLibrary := false,
@@ -68,7 +68,7 @@ lazy val core = Project("com_nomagic_magicdraw_sysml_plugin_upload", file("."))
   .settings(
     projectID := {
       val previous = projectID.value
-      previous.extra("md.core" -> "http://api.nomagic.com/download_api/plugin/sysml/ltr/latest")
+      previous.extra("md.core" -> "http://api.nomagic.com/download_api/plugin/sysml/fr/latest")
     }
   )
 
