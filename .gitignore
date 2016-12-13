@@ -1,13 +1,4 @@
-.cache
-.ensime*
 .idea
-*.iml
-*.bak
-*.log
-*~
-*links.json
-project/project
-project/target
+downloads
 local.*
-gh-pages/
 target

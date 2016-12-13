@@ -3,13 +3,11 @@ import sbt._
 
 enablePlugins(AetherPlugin)
 
+enablePlugins(GitVersioning)
+
 scalaVersion := "2.11.8"
 
 updateOptions := updateOptions.value.withCachedResolution(true)
-
-resolvers += Resolver.bintrayRepo("jpl-imce", "gov.nasa.jpl.imce")
-
-resolvers += Resolver.bintrayRepo("tiwg", "org.omg.tiwg")
 
 PgpKeys.useGpg := true
 
@@ -36,7 +34,7 @@ val noSourcesSettings: Seq[Setting[_]] = Seq(
 
   organization := "org.omg.tiwg.vendor.nomagic",
 
-  version := "18.0-sp6",
+  git.baseVersion := "18.0-sp6",
 
   // disable automatic dependency on the Scala library
   autoScalaLibrary := false,
