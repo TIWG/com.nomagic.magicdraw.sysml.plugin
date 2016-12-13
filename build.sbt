@@ -51,18 +51,22 @@ val noSourcesSettings: Seq[Setting[_]] = Seq(
   pomIncludeRepository := { _ => false }
 )
 
-ivyLoggingLevel := UpdateLogging.Full
-
-logLevel in Compile := Level.Debug
-
-persistLogLevel := Level.Debug
+shellPrompt in ThisBuild := { state => Project.extract(state).currentRef.project + "> " }
 
 lazy val core = Project("com_nomagic_magicdraw_sysml_plugin_upload", file("."))
   .settings(noSourcesSettings)
   .settings(
     name := "com.nomagic.magicdraw.sysml.plugin",
     moduleName := name.value,
-    organization := "org.omg.tiwg.vendor.nomagic")
+    organization := "org.omg.tiwg.vendor.nomagic",
+
+    libraryDependencies += 
+      "org.omg.tiwg.vendor.nomagic"
+        % "com.nomagic.magicdraw.package"
+        % "18.0-sp6.2"
+        artifacts
+        Artifact("com.nomagic.magicdraw.package", "pom", "pom", None, Seq(), None, Map())
+  )
   .settings(
     projectID := {
       val previous = projectID.value

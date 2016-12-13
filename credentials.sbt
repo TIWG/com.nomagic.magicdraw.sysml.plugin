@@ -1,5 +1,7 @@
 import CredentialsSettings._
 
+resolvers += Resolver.bintrayRepo("tiwg", "org.omg.tiwg.vendor.nomagic")
+
 // publish to bintray
 credentials += Credentials(
   "Bintray API Realm", "api.bintray.com",
