@@ -60,12 +60,34 @@ lazy val core = Project("com_nomagic_magicdraw_sysml_plugin_upload", file("."))
     moduleName := name.value,
     organization := "org.omg.tiwg.vendor.nomagic",
 
-    libraryDependencies += 
+    resolvers += Resolver.bintrayRepo("tiwg", "org.omg.tiwg.vendor.nomagic"),
+
+    // This works as long as "addMavenResolverPlugin" is not used!
+
+    libraryDependencies +=
       "org.omg.tiwg.vendor.nomagic"
         % "com.nomagic.magicdraw.package"
-        % "18.0-sp6.2"
+        % "18.0-sp6.+"
         artifacts
-        Artifact("com.nomagic.magicdraw.package", "pom", "pom", None, Seq(), None, Map())
+        Artifact(
+          name="com.nomagic.magicdraw.package",
+          `type`="pom",
+          extension="pom")
+
+    // If using "addMavenResolverPlugin", then it is necessary to specify where to download the POM
+    // otherwise SBT attempts to resolve the jar (not the pom), doesn't find it and fails!
+//    libraryDependencies +=
+//      "org.omg.tiwg.vendor.nomagic"
+//        % "com.nomagic.magicdraw.package"
+//        % "18.0-sp6.2"
+//        artifacts
+//        Artifact(
+//          name="com.nomagic.magicdraw.package",
+//          `type`="pom",
+//          extension="pom",
+//          classifier=None,
+//          configurations=Seq(),
+//          url=Some(url("https://dl.bintray.com/tiwg/org.omg.tiwg.vendor.nomagic/org/omg/tiwg/vendor/nomagic/com.nomagic.magicdraw.package/18.0-sp6.2/com.nomagic.magicdraw.package-18.0-sp6.2.pom")))
   )
   .settings(
     projectID := {
